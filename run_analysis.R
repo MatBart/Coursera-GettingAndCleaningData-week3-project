@@ -69,8 +69,11 @@ descrnames <- merge(activity_labels,meanstddata,by.x="activity_id",by.y="activit
 ## Melt the dataset with the descriptive activity names for better handling
 data_melt <- melt(descrnames,id=c("activity_id","activity_name","subject_id"))
 
+## Cast the melted dataset according to the average of each variable for each activity and each subjec
+mean_data <- dcast(data_melt,activity_id + activity_name + subject_id ~ variable,mean)
+
 # Cleaning up the variable names to set appropriate label with descriptive activity names
-colNames  = colnames(data_melt); 
+colNames  = colnames(mean_data); 
 for (i in 1:length(colNames)) 
 {
   colNames[i] = gsub("\\()","",colNames[i])
@@ -86,10 +89,7 @@ for (i in 1:length(colNames))
   colNames[i] = gsub("JerkMag","JerkMagnitude",colNames[i])
   colNames[i] = gsub("GyroMag","GyroMagnitude",colNames[i])
 };
-colnames(data_melt) = colNames;
-
-## Cast the melted dataset according to the average of each variable for each activity and each subjec
-mean_data <- dcast(data_melt,activity_id + activity_name + subject_id ~ variable,mean)
+colnames(mean_data) = colNames;
 
 ## Create a file with the new tidy dataset
 write.table(mean_data,"./tidy_data.txt")
