@@ -92,4 +92,4 @@ for (i in 1:length(colNames))
 colnames(mean_data) = colNames;
 
 ## Create a file with the new tidy dataset
-write.table(mean_data,"./tidy_data.txt")
+write.table(mean_data,"./tidy_data.txt", row.name=FALSE)
