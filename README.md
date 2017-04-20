@@ -1,5 +1,5 @@
 # Coursera - Data Scientist course
-# Getting and cleaning data - Week 3 Course project
+# Getting and cleaning data - Week 4 Course project
 
 ### Run_Analysis.R R-script on Human Activity Recognition Using Smartphones Dataset 
 ### Version 1.0
